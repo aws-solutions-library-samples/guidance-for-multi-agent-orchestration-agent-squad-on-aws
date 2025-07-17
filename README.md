@@ -1,4 +1,4 @@
-## My Project
+## Agent Squad
 
 TODO: Fill this README out!
 
