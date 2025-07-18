@@ -47,7 +47,7 @@ import {BedrockKnowledgeBaseModels } from './constants';
 export class AiEcommerceSupportSimulatorStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
-
+    this.templateOptions.description = 'Guidance for Multi Agent Orchestration Agent Squad on AWS(SO9035).';
     // Create KMS key for encryption
     const kmsKey = new kms.Key(this, 'StackKmsKey', {
       description: 'KMS key for AI Ecommerce Support Simulator',
