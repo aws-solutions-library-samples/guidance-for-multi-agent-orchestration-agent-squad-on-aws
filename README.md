@@ -1,4 +1,5 @@
-# AI-Powered E-commerce Support Simulator
+# Guidance for Multi-Agent Orchestration with Agent-Squad on AWS
+
 
 A demonstration of how AI agents and human support can work together in an e-commerce customer service environment. This project showcases intelligent query routing, multi-agent collaboration, and seamless human integration for complex support scenarios.
 
@@ -10,6 +11,11 @@ A demonstration of how AI agents and human support can work together in an e-com
 - Tool-augmented AI interactions
 - Production-ready AWS architecture
 - Mock data for realistic scenarios
+
+## Architecture Design
+![agentsqaud](./img/agentsqaud.png)
+
+
 
 ## 💻 Interface & Communication Modes
 
@@ -113,6 +119,23 @@ The system is built on AWS with the following key components:
 
 ### Mock Data
 The system includes a comprehensive `mock_data.json` file that provides sample order information
+
+### Cost estimate
+
+| AWS Service | Dimensions | Cost [USD] |
+|-------------|------------|------------|
+| Amazon CloudFront | 100GB data transfer, 1M HTTP requests per month | $9.00 |
+| Amazon S3 | 20GB storage for website assets, 2M requests per month | $1.50 |
+| Amazon Cognito | 10,000 monthly active users (MAUs) | $55.00 |
+| AWS AppSync | 5M queries and 1M real-time subscriptions per month | $45.00 |
+| Amazon SQS | 3M messages across all queues (Customer, Support, Outgoing) | $3.60 |
+| AWS Lambda | 3 functions (Customer Message Handler, Agent Squad Orchestrator, Send Response Handler), 3M invocations, avg 256MB memory, 500ms duration | $25.00 |
+| Amazon Bedrock (Claude 3.7 Sonnet) | Order Management Agent: 50,000 requests/month, avg 4,000 tokens per request (input+output) | $300.00 |
+| Amazon Bedrock (Claude 3 Haiku) | Product Information Agent: 75,000 requests/month, avg 2,000 tokens per request (input+output) | $112.50 |
+| Amazon Bedrock Knowledge Base | 5GB data indexed, 50,000 queries per month | $125.00 |
+| Amazon DynamoDB | 20GB storage, 10M read request units, 5M write request units | $35.00 |
+| AWS IAM | Identity and access management policies and roles | $0.00 |
+| Total Monthly Cost | | $711.60 |
 
 ## 📋 Deployment
 
