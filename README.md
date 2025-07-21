@@ -13,7 +13,7 @@ A demonstration of how AI agents and human support can work together in an e-com
 - Mock data for realistic scenarios
 
 ## Architecture Design
-![agentsqaud](./img/agentsqaud.png)
+![agentsqaud](./img/agentsquad.png)
 
 1. The user accesses the web application through Amazon CloudFront, which delivers content from the Amazon S3 Website bucket, while Amazon Cognito handles authentication and provides temporary credentials via Identity Pool.
 
