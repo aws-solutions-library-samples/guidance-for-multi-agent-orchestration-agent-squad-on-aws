@@ -15,6 +15,25 @@ A demonstration of how AI agents and human support can work together in an e-com
 ## Architecture Design
 ![agentsqaud](./img/agentsqaud.png)
 
+1. The user accesses the web application through Amazon CloudFront, which delivers content from the Amazon S3 Website bucket, while Amazon Cognito handles authentication and provides temporary credentials via Identity Pool.
+
+2. The authenticated user sends messages through the web UI, which communicates with AWS AppSync GraphQL API to process queries, mutations, and subscriptions for real-time communication.
+
+3. AWS AppSync routes customer messages to the Amazon SQS Customer Messages Queue, which triggers the AWS Lambda Customer Message Handler function to process incoming customer inquiries.
+
+4. AWS Lambda Customer Messages initializes the Agent Squad orchestrator, which uses Amazon Bedrock Classifier to analyze the message content and determine which specialized AI agent should handle the request.
+
+5. Based on the classification, the message is routed to one of three agents: the Order Management Agent (using Claude 3 Sonnet), the Product Information Agent (using Claude 3 Haiku), or the Human Agent for complex cases requiring human intervention.
+
+6. The Order Management Agent handles order-related inquiries using tools for order lookup, shipment tracking, and return processing, while the Product Information Agent retrieves product details from the Amazon Bedrock Knowledge Base connected to OpenSearch Serverless.
+
+7. When complex inquiries are routed to the Human Agent, it performs two simultaneous actions: first, it immediately responds to the customer with a notification message confirming that their request has been received and will be handled by a human support representative; second, it sends the customer's original message to the Amazon SQS Support Messages Queue where human support staff can retrieve and process the request asynchronously.
+
+8. Agent responses are sent to the Amazon SQS Outgoing Messages Queue, which triggers the AWS Lambda Send Response Handler to process and format the responses.
+
+9. The Send Response Lambda sends the formatted responses back to AWS AppSync, which delivers them to the web UI through GraphQL subscriptions for real-time updates to the customer interface.
+
+10. Throughout this process, Amazon DynamoDB stores conversation history and session data, while AWS IAM roles and policies ensure secure access to all services and resources.
 
 
 ## 💻 Interface & Communication Modes
