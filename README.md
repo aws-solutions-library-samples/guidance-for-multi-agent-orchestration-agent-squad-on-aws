@@ -129,8 +129,8 @@ Follow these steps to deploy the demo chat web application:
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/awslabs/agent-squad.git
-   cd agent-squad/examples/ecommerce-support-simulator
+   git clone https://github.com/aws-solutions-library-samples/guidance-for-multi-agent-orchestration-agent-squad-on-aws
+   cd guidance-for-multi-agent-orchestration-agent-squad-on-aws
    ```
 
 2. **Install Dependencies**:
