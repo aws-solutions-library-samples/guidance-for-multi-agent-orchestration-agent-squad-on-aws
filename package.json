@@ -30,7 +30,7 @@
     "@opensearch-project/opensearch": "^3.5.1",
     "agent-squad": "^1.0.1",
     "aws-cdk-lib": "^2.202.0",
-    "axios": "^1.8.4",
+    "axios": "^1.11.0",
     "cdk-nag": "^2.36.24",
     "constructs": "^10.4.2",
     "cross-spawn": "^7.0.6",
